@@ -1,0 +1,124 @@
+{
+  "content": [
+    {
+      "path": "ContentInfo/milviz-aircraft-pc6/Thumbnail.jpg",
+      "size": 35724,
+      "date": 133308621431891867
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-efb3/milviz-porter-efb3.css",
+      "size": 12071,
+      "date": 133308621444715460
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-efb3/milviz-porter-efb3.html",
+      "size": 140423,
+      "date": 133858517338136064
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-efb3/milviz-porter-efb3.js",
+      "size": 58659,
+      "date": 133847937146092374
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-efb3/assets/BlackBird_logo_portrait.png",
+      "size": 216666,
+      "date": 133308621445887531
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-itt3/milviz-porter-itt3.css",
+      "size": 920,
+      "date": 133308621447069566
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-itt3/milviz-porter-itt3.html",
+      "size": 2691,
+      "date": 133858526961872574
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-itt3/milviz-porter-itt3.js",
+      "size": 2578,
+      "date": 133857512537410184
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/flight_model.cfg",
+      "size": 17368,
+      "date": 133858235068879445
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/systems.cfg",
+      "size": 17043,
+      "date": 133858260523327038
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/model/PC6_Interior.xml",
+      "size": 47664,
+      "date": 133857553519019159
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/flight_model.cfg",
+      "size": 17807,
+      "date": 133858235188379215
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/systems.cfg",
+      "size": 17045,
+      "date": 133858260619243200
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/model/PC6_Interior.xml",
+      "size": 45862,
+      "date": 133857553283088652
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/flight_model.cfg",
+      "size": 17884,
+      "date": 133858235298947512
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/systems.cfg",
+      "size": 17045,
+      "date": 133696099936918831
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/model/PC6_Interior.xml",
+      "size": 45863,
+      "date": 133857506094299811
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/panel/PANEL.CFG",
+      "size": 2641,
+      "date": 133858512918220465
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Floats/flight_model.cfg",
+      "size": 17271,
+      "date": 133858235415490912
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Floats/systems.cfg",
+      "size": 17057,
+      "date": 133858260717642593
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Tundra/flight_model.cfg",
+      "size": 17777,
+      "date": 133858235574157560
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Tundra/systems.cfg",
+      "size": 17057,
+      "date": 133858260802926758
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Wheels/flight_model.cfg",
+      "size": 17882,
+      "date": 133858235853752677
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Wheels/systems.cfg",
+      "size": 17057,
+      "date": 133858260897400482
+    }
+  ]
+}

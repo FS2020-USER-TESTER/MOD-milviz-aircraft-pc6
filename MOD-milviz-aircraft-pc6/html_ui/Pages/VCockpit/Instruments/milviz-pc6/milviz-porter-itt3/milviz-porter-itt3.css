@@ -1,0 +1,62 @@
+
+@font-face {
+    font-family: "MVLCD";
+    src: url("/Pages/VCockpit/Instruments/milviz-pc6/milviz-porter-assets/MVLCD.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --color-white: #fff;
+    --time-animation: 0.6s;
+}
+
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "MVLCD";
+    overflow: scroll;
+    -ms-overflow-style: none;
+    background-color: #000;
+}
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+
+#MainDisplay {
+    font-family: "MVLCD" !important;
+}
+
+#full, #decimal, #hundreds {
+    font-family: "MVLCD" !important;
+}
+
+.visual.hidden {
+    display: none;
+}
+
+#content {
+    display: none;
+}
+
+#content.show {
+    display: initial;
+}
+
+#dot {
+    display: none;
+}
+
+#dot.show {
+    display: initial;
+}
+
+.blink {
+    animation: blink-animation 0.7s steps(5, start) infinite;
+  }

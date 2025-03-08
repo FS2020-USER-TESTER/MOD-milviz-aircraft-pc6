@@ -1,0 +1,1397 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModelInfo>
+
+	<LODS>
+		<LOD minSize="100" ModelFile="PC6_Interior_LOD0.gltf"/>
+		<LOD minSize="0" ModelFile="PC6_Interior_LOD1.gltf"/>
+	</LODS>
+
+	<Behaviors>
+		<IncludeBase RelativeFile="..\..\Milviz_PC6_Common\modeldef\PC6_Interior_Base.xml"/>
+
+		<Include ModelBehaviorFile="Asobo\GPS\AS530.xml"/>
+		<Include ModelBehaviorFile="Asobo\GPS\AS430.xml"/>		
+		<Include ModelBehaviorFile="Asobo\Transponder\AS330.xml"/>
+		<Include ModelBehaviorFile="Asobo\Misc\Clock.xml"/>
+
+	<!-- ANALOG PANEL SETUP ######################### -->
+
+		<Component ID="Panel_State_CommonItems_Positions">
+		
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>Altimaster_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>Callsign_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>ELECTRICAL_Push_Caution_1_Position_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>ELECTRICAL_Push_Stall_1_Position_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>ELECTRICAL_Push_Warning_1_Position_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>Deice_Gauge_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>Flaps_Indicator_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>FrontSwitchPanel_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>KAP140_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>KMA30_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>KR87_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>Trim_Indicator_Helper</ANIM_NAME>
+				<ANIM_LENGTH>1</ANIM_LENGTH>
+				<ANIM_CODE>
+					1
+				</ANIM_CODE>
+			</UseTemplate>
+
+		</Component>
+
+		<!-- The following default components are linked to a L:var whose value is defined in the tablet and state saved -->
+		<!-- L:PC6_GPSState : Setting to anything other than zero will hide the GNS 530/430, the transponder and the audio panel -->
+
+		<Component ID="Analog_State_GNS530" Node="AS530_Frame_1">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>(L:PC6_GPSState) 0 ==</VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>
+
+ 		<Component ID="Analog_State_GNS430" Node="AS430_Frame_1">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>(L:PC6_GPSState) 0 ==</VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>       
+
+		<Component ID="Analog_State_GTX330" Node="GTX330_Frame">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>(L:PC6_GPSState) 0 ==</VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="Analog_State_KMA30" Node="KMA30_Helper">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>(L:PC6_GPSState) 0 == </VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>        
+
+		<!-- the following GPS panels are included in the model, but hidden by default -->
+		<!-- by hiding other components and making these visible, it should be easy for mod / avionics developers to utilize -->
+
+		<!-- GTN 750 material name for panel.cfg : $screen_gtn750_1 -->
+		<!-- GTN 650 material name for panel.cfg : $screen_gtn650_1 -->
+
+		<!-- GTN 750 Nodes & Animations -->
+
+			<!-- volume knob -->
+
+				<!-- <NODE_ID>GTN750_Knob_Volume</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN750_Knob_Volume</ANIM_NAME_KNOB> -->
+				<!-- <ANIM_NAME_PUSH>GTN750_Knob_Volume_Push</ANIM_NAME_PUSH> -->
+
+			<!-- inner knob -->
+
+				<!-- <NODE_ID>GTN750_Knob_Inner</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN750_Knob_Inner</ANIM_NAME_KNOB> -->
+				<!-- <ANIM_NAME_PUSH>GTN750_Knob_Inner_Push</ANIM_NAME_PUSH> -->
+
+			<!-- outer knob -->
+
+				<!-- <NODE_ID>GTN750_Knob_Outer</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN750_Knob_Outer</ANIM_NAME_KNOB> -->
+
+			<!-- home button -->
+
+				<!-- <NODE_ID>GTN750_Push_Home</NODE_ID> -->
+				<!-- <ANIM_NAME>GTN750_Push_Home</ANIM_NAME> -->
+
+			<!-- direct-to button -->
+
+				<!-- <NODE_ID>GTN750_Push_DirectTo</NODE_ID> -->
+				<!-- <ANIM_NAME>GTN750_Push_DirectTo</ANIM_NAME> -->
+
+		<!-- GTN 650 Nodes & Animations -->
+
+			<!-- volume knob -->
+
+				<!-- <NODE_ID>GTN650_Knob_Volume</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN650_Knob_Volume</ANIM_NAME_KNOB> -->
+				<!-- <ANIM_NAME_PUSH>GTN650_Knob_Volume_Push</ANIM_NAME_PUSH> -->
+
+			<!-- inner knob -->
+
+				<!-- <NODE_ID>GTN650_Knob_Inner</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN650_Knob_Inner</ANIM_NAME_KNOB> -->
+				<!-- <ANIM_NAME_PUSH>GTN650_Knob_Inner_Push</ANIM_NAME_PUSH> -->
+
+			<!-- outer knob -->
+
+				<!-- <NODE_ID>GTN650_Knob_Outer</NODE_ID> -->
+				<!-- <ANIM_NAME_KNOB>GTN650_Knob_Outer</ANIM_NAME_KNOB> -->
+
+			<!-- home button -->
+
+				<!-- <NODE_ID>GTN650_Push_Home</NODE_ID> -->
+				<!-- <ANIM_NAME>GTN650_Push_Home</ANIM_NAME> -->
+
+			<!-- direct-to button -->
+
+				<!-- <NODE_ID>GTN650_Push_DirectTo</NODE_ID> -->
+				<!-- <ANIM_NAME>GTN650_Push_DirectTo</ANIM_NAME> -->
+
+
+		<Component ID="GTN750" Node="GTN750_Frame">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>0</VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>
+
+		<Component ID="GTN650" Node="GTN650_Frame">
+			<UseTemplate Name="ASOBO_GT_Visibility_Code">
+				<VISIBILITY_CODE>0</VISIBILITY_CODE>
+			</UseTemplate>
+		</Component>
+
+	<!-- ANALOG PANEL ############################### -->
+		<!-- INSTRUMENTS ############################### -->
+			<Component ID="INSTRUMENT_PrimaryInstruments">
+
+				<Component ID="Analog_AirspeedIndicator">
+					<UseTemplate Name="ASOBO_INSTRUMENT_Needle_Airspeed_Template">
+						<ID>2</ID>
+						<MIN_VALUE>10</MIN_VALUE>
+						<MAX_VALUE>210</MAX_VALUE>
+					</UseTemplate>
+				</Component>
+
+				<Component ID="Analog_AttitudeIndicator">
+					<UseTemplate Name="ASOBO_INSTRUMENT_AttitudeIndicator_Template">
+						<ID>2</ID>
+						<USE_SUCTION_PRESSURE_CHECK/>
+						<NO_CAGE>True</NO_CAGE>
+						<PITCH_MIN_VALUE>-20</PITCH_MIN_VALUE>
+						<PITCH_MAX_VALUE>20</PITCH_MAX_VALUE>
+						<ANIM_VALUE_PLUS_REF_DEGREES>1</ANIM_VALUE_PLUS_REF_DEGREES> <!-- Frame where pitch equals 20° -->
+						<ANIM_VALUE_MINUS_REF_DEGREES>99</ANIM_VALUE_MINUS_REF_DEGREES> <!-- Frame where pitch equals -20° -->
+						<ANIM_PITCH_LENGTH>100</ANIM_PITCH_LENGTH><!-- Frame count -->
+						<ANIM_PITCH_0>50</ANIM_PITCH_0> <!-- Frame where pitch equals 0° -->
+						<KNOB_HIGHLIGHT_NODE_ID>INSTRUMENT_AttitudeIndicator_Knob_2</KNOB_HIGHLIGHT_NODE_ID>
+					</UseTemplate>
+				</Component>
+
+				<Component ID="Analog_Altimeter_1">
+
+					<UseTemplate Name="ASOBO_INSTRUMENT_Altimeter_Template">
+						<ID>1</ID>
+						<KNOB_HIGHLIGHT_NODE_ID>INSTRUMENT_Knob_Altimeter_1</KNOB_HIGHLIGHT_NODE_ID>
+					</UseTemplate>
+
+					<!-- baro hundredths -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Baro_0001</ANIM_NAME>
+						<ANIM_CODE>
+							(A:KOHLSMAN SETTING HG:1, inHg) 100 * near 10 % 10 *
+						</ANIM_CODE>
+					</UseTemplate>
+					<!-- baro tenths -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Baro_0010</ANIM_NAME>
+						<ANIM_CODE>
+							(A:KOHLSMAN SETTING HG:1, inHg) sp0
+							l0 100 * near 10 % 10 * 0 == if{
+								l0 10 * near 10 % 10 *
+							} els{
+								l0 10 * int 10 % 10 *
+							}
+						</ANIM_CODE>
+					</UseTemplate>
+					<!-- baro 1's -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Baro_0100</ANIM_NAME>
+						<ANIM_CODE>
+							(A:KOHLSMAN SETTING HG:1, inHg) sp0
+							l0 100 * near 10 % 10 * 0 == l0 10 * near 10 % 10 * 0 == and if{
+								l0 near 10 % 10 *
+							} els{
+								l0 int 10 % 10 *
+							}
+						</ANIM_CODE>
+					</UseTemplate>
+					<!-- baro 10's -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Baro_1000</ANIM_NAME>
+						<ANIM_CODE>
+							(A:KOHLSMAN SETTING HG:1, inHg) sp0
+							l0 100 * near 10 % 10 * 0 == l0 10 * near 10 % 10 * 0 == l0 near 10 % 10 * 0 == and and if{
+								l0 10 / near 10 % 10 *
+							} els{
+								l0 10 / int 10 % 10 *
+							}
+						</ANIM_CODE>
+					</UseTemplate>
+
+					<!-- 100's -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Altimeter_100_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:INDICATED ALTITUDE:1, feet) 0 &gt;=
+							if{ (A:INDICATED ALTITUDE:1, feet) 100 / 10 % 10 * }
+							els{ (A:INDICATED ALTITUDE:1, feet) 100 / 10 % 10 * 100 + }
+						</ANIM_CODE>						
+					</UseTemplate>
+					<!-- 1000's -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Altimeter_1000_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:INDICATED ALTITUDE:1, feet) 0 &gt;=
+							if{ (A:INDICATED ALTITUDE:1, feet) 1000 / 10 % 10 * 4 * }
+							els{ (A:INDICATED ALTITUDE:1, feet) 1000 / 10 % 10 * 100 + 4 * }
+						</ANIM_CODE>
+						<ANIM_LENGTH>400</ANIM_LENGTH>
+					</UseTemplate>
+					<!-- 10000's -->
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Drum_Altimeter_10000_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:INDICATED ALTITUDE:1, feet) 0 &gt;=
+							if{ (A:INDICATED ALTITUDE:1, feet) 10000 / flr 10 * }
+							els{ (A:INDICATED ALTITUDE:1, feet) 10000 / flr 10 * 100 + }
+						</ANIM_CODE>
+					</UseTemplate>
+
+				</Component>
+
+				<Component ID="Analog_VSI">
+					<UseTemplate Name="ASOBO_INSTRUMENT_Needle_VerticalSpeed_Template">
+						<MAX_VALUE>6000</MAX_VALUE>
+					</UseTemplate>	
+				</Component>
+
+				<Component ID="Analog_TurnCoordinator">
+					<UseTemplate Name="ASOBO_INSTRUMENT_Needle_Turn_Template">
+					</UseTemplate>						
+				</Component>
+
+
+
+				<Component ID="PC6_HSI">
+
+					<Parameters Type="Default">
+						<ELECTRICAL_CODE>(A:CIRCUIT ON:9, Bool)</ELECTRICAL_CODE>
+					</Parameters>
+
+					<UseTemplate Name="ASOBO_GT_Update">
+						<FREQUENCY>1</FREQUENCY>
+						<UPDATE_CODE>
+							#ELECTRICAL_CODE# if{
+								(A:PLANE HEADING DEGREES GYRO, Degrees) (L:PC6_StateGyroHeading, Number) != if{
+									(A:PLANE HEADING DEGREES GYRO, Degrees) (&gt;L:PC6_StateGyroHeading)
+								}
+							}
+						</UPDATE_CODE>
+					</UseTemplate>
+
+					<Component ID="KI525A_COMPASS_CARD">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Compass_Card</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Sim">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_WRAP>TRUE</ANIM_WRAP>
+								<ANIM_SIMVAR>PLANE HEADING DEGREES GYRO</ANIM_SIMVAR>
+								<ANIM_SIMVAR_UNITS>degrees</ANIM_SIMVAR_UNITS>
+								<ANIM_SIMVAR_BIAS>0</ANIM_SIMVAR_BIAS>
+								<INVERT_ANIM>True</INVERT_ANIM>
+								<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+								<FAILURE_CODE>(L:PC6_StateGyroHeading, Number)</FAILURE_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_COURSE_POINTER">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Center_Card</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_LAG>200</ANIM_LAG>
+								<ANIM_WRAP>TRUE</ANIM_WRAP>
+								<ANIM_CODE>
+									(A:NAV OBS:1, Degrees) dnor 
+								</ANIM_CODE>								
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_CDI_BAR">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Deviation_Bar</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									(L:AS530_CDI_Source_1, Bool) if{
+										(A:GPS CDI NEEDLE, Number) 127 +
+									} els{
+										(A:NAV CDI:1, Number) 127 +
+									}
+								</ANIM_CODE> 
+								<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+								<FAILURE_CODE>127</FAILURE_CODE>
+								<ANIM_LENGTH>254</ANIM_LENGTH>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_GLIDESLOPE_POINTERS">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Glideslope_Pointers</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									(L:AS530_CDI_Source_1, Bool) if{
+										(A:GPS GSI NEEDLE, Number) 127 +
+									} els{
+										(A:NAV GSI:1, Number) 127 +
+									}
+								</ANIM_CODE>
+								<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+								<FAILURE_CODE>0</FAILURE_CODE>
+								<ANIM_LENGTH>254</ANIM_LENGTH>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_GLIDESLOPE_VISIBILITY">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Glideslope_Visibility</NODE_ID>
+							<GLIDESLOPE_CODE>
+								(A:GPS DRIVES NAV1, Bool) if{
+									(A:GPS HAS GLIDEPATH, Bool)
+								} els{
+									(A:NAV HAS GLIDE SLOPE:1, Bool)
+								}							
+							</GLIDESLOPE_CODE>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									#GLIDESLOPE_CODE# 100 *
+								</ANIM_CODE> 
+								<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+								<FAILURE_CODE>0</FAILURE_CODE>
+								<ANIM_LAG>50</ANIM_LAG>
+								<ANIM_LENGTH>100</ANIM_LENGTH>
+							</UseTemplate>
+							<UseTemplate Name="ASOBO_GT_Visibility_Code">
+								<VISIBILITY_CODE>
+									#GLIDESLOPE_CODE#
+								</VISIBILITY_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_NAV_FLAG">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Nav_Flag</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									(A:GPS DRIVES NAV1, Bool) if{
+										(A:GPS IS ACTIVE FLIGHT PLAN, Bool)
+									} els{
+										(A:NAV HAS NAV:1, Bool)
+									}
+									10 *
+								</ANIM_CODE>
+								<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+								<FAILURE_CODE>0</FAILURE_CODE>
+								<ANIM_LAG>50</ANIM_LAG>
+								<ANIM_LENGTH>10</ANIM_LENGTH>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_HEADING_FLAG">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Heading_Flag</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									#ELECTRICAL_CODE#
+									10 *
+								</ANIM_CODE>
+								<ANIM_LAG>50</ANIM_LAG>
+								<ANIM_LENGTH>10</ANIM_LENGTH>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="TF_FLAGS">
+						<Parameters Type="Default">
+							<BEARING_CHECK>
+								(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs	s1 180 &gt; if{ 360 l1 - abs sp1 } l1
+							</BEARING_CHECK>
+						</Parameters>
+
+						<Component ID="KI525A_TO_FLAG">
+							<Parameters Type="Default">
+								<NODE_ID>KI525A_ANIM_To_Flag</NODE_ID>
+							</Parameters>
+							<Component ID="#NODE_ID#" Node="#NODE_ID#">
+								<UseTemplate Name="ASOBO_GT_Anim">
+									<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+									<ANIM_CODE>
+										(A:GPS DRIVES NAV1, Bool) if{
+											(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												#BEARING_CHECK# 90 &lt; if{ 
+													1 sp0 
+												}											
+											} els{
+												0 sp0
+											}
+										} els{
+											(A:NAV TOFROM:1, Enum) 1 == if{
+												1 sp0
+											} els{
+												0 sp0
+											}
+										}
+										l0 10 *
+									</ANIM_CODE>
+									<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+									<FAILURE_CODE>0</FAILURE_CODE>
+									<ANIM_LAG>50</ANIM_LAG>
+									<ANIM_LENGTH>10</ANIM_LENGTH>
+								</UseTemplate>						
+							</Component>
+						</Component>
+
+						<Component ID="KI525A_FROM_FLAG">
+							<Parameters Type="Default">
+								<NODE_ID>KI525A_ANIM_From_Flag</NODE_ID>
+							</Parameters>
+							<Component ID="#NODE_ID#" Node="#NODE_ID#">
+								<UseTemplate Name="ASOBO_GT_Anim">
+									<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+									<ANIM_CODE>
+										(A:GPS DRIVES NAV1, Bool) if{
+											(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+												#BEARING_CHECK# 90 &gt; if{ 
+													1 sp0 
+												}											
+											} els{
+												0 sp0
+											}
+										} els{
+											(A:NAV TOFROM:1, Enum) 2 == if{
+												1 sp0
+											} els{
+												0 sp0
+											}
+										}
+										l0 10 *
+									</ANIM_CODE>
+									<FAILURE>#ELECTRICAL_CODE#</FAILURE>
+									<FAILURE_CODE>0</FAILURE_CODE>								
+									<ANIM_LAG>50</ANIM_LAG>
+									<ANIM_LENGTH>10</ANIM_LENGTH>
+								</UseTemplate>						
+							</Component>
+						</Component>
+
+					</Component>
+
+					<Component ID="KI525A_HEADING_BUG">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Heading_Bug</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>
+									(A:AUTOPILOT HEADING LOCK DIR:1, Degrees)
+								</ANIM_CODE>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_WRAP>TRUE</ANIM_WRAP>
+								<ANIM_NEVER_FAILS/>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_HEADING_KNOB">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Heading_Knob</NODE_ID>
+							<HDG_ID>1</HDG_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="MV_Base_Template">
+								<TOOLTIP_TITLE>'Heading Bug'</TOOLTIP_TITLE>
+								<TT_DESCRIPTION>'Rotate to adjust heading bug'</TT_DESCRIPTION>
+								<IE_NAME>#NODE_ID#_Knob</IE_NAME>
+								<INTERACTION_TYPE>Knob</INTERACTION_TYPE>
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<IS_INFINITE>True</IS_INFINITE>
+								<SET_STATE_EXTERNAL>#HDG_ID# p0 dnor 360 / @16k * (&gt;K:2:AP_HEADING_BUG_SET_EX1)</SET_STATE_EXTERNAL>
+								<CLAMP_VALUE>dnor</CLAMP_VALUE>
+								<GET_STATE_EXTERNAL>(A:AUTOPILOT HEADING LOCK DIR:#HDG_ID#, degrees)</GET_STATE_EXTERNAL>
+								<SIMVAR_TO_WATCH_0>AUTOPILOT HEADING LOCK DIR:#HDG_ID#</SIMVAR_TO_WATCH_0>
+								<FORMAT_VALUE>'%d°' @sprintf</FORMAT_VALUE>
+								<STATE_TO_POS_EXTERNAL>3.6 /</STATE_TO_POS_EXTERNAL>
+								<THRESHOLD_INPUT>0.00005</THRESHOLD_INPUT>
+								<THRESHOLD_MOUSE>0.001</THRESHOLD_MOUSE>
+								<WWISE_EVENT>rotary_hsi_hdg</WWISE_EVENT>
+								<COUNT>36</COUNT>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="KI525A_COURSE_KNOB">
+						<Parameters Type="Default">
+							<NODE_ID>KI525A_ANIM_Course_Knob</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="MV_Base_Template">
+								<TOOLTIP_TITLE>'Course Selection'</TOOLTIP_TITLE>
+								<TT_DESCRIPTION>
+									'Rotate to adjust course selection'
+								</TT_DESCRIPTION>
+								<IE_NAME>#NODE_ID#_Knob</IE_NAME>
+								<INTERACTION_TYPE>Knob</INTERACTION_TYPE>
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<IS_INFINITE>True</IS_INFINITE>
+								<SET_STATE_EXTERNAL>
+									p0 0 &gt; if{ (&gt;K:VOR1_OBI_INC) } els{ (&gt;K:VOR1_OBI_DEC)
+								</SET_STATE_EXTERNAL>
+								<GET_TT_VALUE_STATE>
+									(A:NAV OBS:1, Degree) sp1
+								</GET_TT_VALUE_STATE>
+								<FORMAT_VALUE>
+									l1 '%.0f°' @sprintf
+								</FORMAT_VALUE>
+								<WWISE_EVENT>rotary_hsi_crs</WWISE_EVENT>
+								<COUNT>4</COUNT>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+				</Component>
+
+				<Component ID="PC6_RMI">
+
+					<Component ID="RMI_Source1_Selector">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Button_SourceSelect_1</NODE_ID>
+							<ANIM_NAME>RMI_Button_SourceSelect_1</ANIM_NAME>
+							<WWISE_EVENT_1>button_rmi_press</WWISE_EVENT_1>
+							<WWISE_EVENT_2>button_rmi_release</WWISE_EVENT_2>
+						</Parameters>
+						<Parameters Type="Default">
+							<TOOLTIP_TITLE>'Source Select'</TOOLTIP_TITLE>
+							<TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+							<TT_ICON>Push</TT_ICON>
+							<TT_INTERACTION_FLAGS>PRIMARY_DOWN</TT_INTERACTION_FLAGS>
+							<TT_DESCRIPTION>'Toggle between NAV 1 and ADF sources'</TT_DESCRIPTION>
+							<TT_VALUE>
+								(L:PC6_RMI_Pointer_Source_1, bool) if{
+									'ADF'
+								} els{
+									'NAV 1'
+								}							
+							</TT_VALUE>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseInputEvent ID="MV_IE_TOOLTIP">
+								<TT_BASIC_ONLY>#NODE_ID#</TT_BASIC_ONLY>
+							</UseInputEvent>
+							<UseTemplate Name="ASOBO_GT_Switch_Code">
+								<TOOLTIP_ENTRY_0>MV_#NODE_ID#</TOOLTIP_ENTRY_0>
+								<ANIM_CODE>
+									(L:PC6_RMI_Pointer_Source_1) 100 *
+								</ANIM_CODE>
+								<LEFT_SINGLE_CODE>
+									(L:PC6_RMI_Pointer_Source_1) ! (&gt;L:PC6_RMI_Pointer_Source_1)
+								</LEFT_SINGLE_CODE>
+							</UseTemplate>
+							<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+								<EMISSIVE_CODE>(A:LIGHT POTENTIOMETER:3, Percent) 100 / 0.2 *</EMISSIVE_CODE>
+							</UseTemplate>						
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Source2_Selector">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Button_SourceSelect_2</NODE_ID>
+							<ANIM_NAME>RMI_Button_SourceSelect_2</ANIM_NAME>
+							<WWISE_EVENT_1>button_rmi_press</WWISE_EVENT_1>
+							<WWISE_EVENT_2>button_rmi_release</WWISE_EVENT_2>
+						</Parameters>
+						<Parameters Type="Default">
+							<TOOLTIP_TITLE>'Source Select'</TOOLTIP_TITLE>
+							<TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+							<TT_ICON>Push</TT_ICON>
+							<TT_INTERACTION_FLAGS>PRIMARY_DOWN</TT_INTERACTION_FLAGS>
+							<TT_DESCRIPTION>'Toggle between NAV 2 and ADF Sources'</TT_DESCRIPTION>
+							<TT_VALUE>
+								(L:PC6_RMI_Pointer_Source_2, bool) if{
+									'ADF'
+								} els{
+									'NAV 2'
+								}							
+							</TT_VALUE>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseInputEvent ID="MV_IE_TOOLTIP">
+								<TT_BASIC_ONLY>#NODE_ID#</TT_BASIC_ONLY>
+							</UseInputEvent>
+							<UseTemplate Name="ASOBO_GT_Switch_Code">
+								<TOOLTIP_ENTRY_0>MV_#NODE_ID#</TOOLTIP_ENTRY_0>
+								<ANIM_CODE>
+									(L:PC6_RMI_Pointer_Source_2) 100 *
+								</ANIM_CODE>
+								<LEFT_SINGLE_CODE>
+									(L:PC6_RMI_Pointer_Source_2) ! (&gt;L:PC6_RMI_Pointer_Source_2)
+								</LEFT_SINGLE_CODE>
+							</UseTemplate>
+							<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+								<EMISSIVE_CODE>(A:LIGHT POTENTIOMETER:3, Percent) 100 / 0.2 *</EMISSIVE_CODE>
+							</UseTemplate>						
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Compass_Card">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_CompassCard_Helper</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_CODE>
+										(A:CIRCUIT AVIONICS ON:1, bool) if{
+											(A:PLANE HEADING DEGREES GYRO,degrees) dnor
+										} els{
+											0
+										}										
+								</ANIM_CODE>
+								<ANIM_LAG>100</ANIM_LAG> 
+								<ANIM_WRAP>True</ANIM_WRAP>
+								<INVERT_ANIM>True</INVERT_ANIM>
+							</UseTemplate>						
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Pointer_1">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Needle_Source_1</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_CODE>
+									(L:PC6_RMI_Pointer_Source_1, bool) if{
+										(A:CIRCUIT AVIONICS ON:1, bool) if{
+											(A:ADF RADIAL:1,degrees) dnor
+										} els{
+											90
+										}
+									} els{
+										(A:CIRCUIT AVIONICS ON:1, bool) (A:NAV HAS NAV:1, bool) (A:NAV HAS LOCALIZER:1, bool) ! and and if{
+											(A:NAV RELATIVE BEARING TO STATION:1,degrees) dnor
+										} els{
+											90
+										}
+									}											
+								</ANIM_CODE>
+								<ANIM_LAG>100</ANIM_LAG> 
+								<ANIM_WRAP>True</ANIM_WRAP>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Pointer_2">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Needle_Source_2</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_LENGTH>360</ANIM_LENGTH>
+								<ANIM_CODE>
+									(L:PC6_RMI_Pointer_Source_2, bool) if{
+										(A:CIRCUIT AVIONICS ON:1, bool) if{
+											(A:ADF RADIAL:1,degrees) dnor
+										} els{
+											90
+										}
+									} els{
+										(A:CIRCUIT AVIONICS ON:1, bool) (A:NAV HAS NAV:2, bool) (A:NAV HAS LOCALIZER:2, bool) ! and and if{
+											(A:NAV RELATIVE BEARING TO STATION:2,degrees) dnor
+										} els{
+											90
+										}
+									}									
+								</ANIM_CODE>
+								<ANIM_LAG>100</ANIM_LAG>
+								<ANIM_WRAP>True</ANIM_WRAP>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Indicator_1_ADF">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Indicator_Source_1_ToADF</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Visibility_Code">
+								<VISIBILITY_CODE>(L:PC6_RMI_Pointer_Source_1, bool)</VISIBILITY_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Indicator_1_NAV">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Indicator_Source_1_ToNav</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Visibility_Code">
+								<VISIBILITY_CODE>(L:PC6_RMI_Pointer_Source_1, bool) !</VISIBILITY_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Indicator_2_ADF">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Indicator_Source_2_ToADF</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Visibility_Code">
+								<VISIBILITY_CODE>(L:PC6_RMI_Pointer_Source_2, bool)</VISIBILITY_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Indicator_2_NAV">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Indicator_Source_2_ToNav</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Visibility_Code">
+								<VISIBILITY_CODE>(L:PC6_RMI_Pointer_Source_2, bool) !</VISIBILITY_CODE>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+					<Component ID="RMI_Heading_Flag">
+						<Parameters Type="Default">
+							<NODE_ID>RMI_Flag_Source_1</NODE_ID>
+						</Parameters>
+						<Component ID="#NODE_ID#" Node="#NODE_ID#">
+							<UseTemplate Name="ASOBO_GT_Anim_Code">
+								<ANIM_NAME>#NODE_ID#</ANIM_NAME>
+								<ANIM_CODE>(A:CIRCUIT AVIONICS ON:1, bool) 100 *</ANIM_CODE>
+								<ANIM_LAG>100</ANIM_LAG>
+							</UseTemplate>
+						</Component>
+					</Component>
+
+				</Component>
+
+				<Component ID="CDI">
+					<Parameters Type="Default">
+						<ELECTRICAL_CODE>(A:CIRCUIT ON:10, Bool)</ELECTRICAL_CODE>
+						<BEARING_CHECK>
+							(A:GPS WP TRUE BEARING, Degrees) (A:GPS WP TRUE REQ HDG, Degrees) - abs	s1 180 &gt; if{ 360 l1 - abs sp1 } l1
+						</BEARING_CHECK>
+					</Parameters>
+					<UseTemplate Name="ASOBO_INSTRUMENT_CDI_Template">
+						<ID>2</ID>
+						<CIRCUIT_ID>10</CIRCUIT_ID>
+						<GPS_DRIVES_NAV_SIMVAR>(L:AS430_CDI_Source_1, Bool)</GPS_DRIVES_NAV_SIMVAR>
+						<IS_AVIONICS_ON>#ELECTRICAL_CODE#</IS_AVIONICS_ON>
+						<WWISE_EVENT>rotary_cdi_obs</WWISE_EVENT>
+						<COUNT>4</COUNT>
+						<FLAG_TO_CODE>
+							(L:AS430_CDI_Source_1, Bool) if{
+								(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+									#BEARING_CHECK# 90 &lt; if{ 
+										1 sp0 
+									}											
+								} els{
+									0 sp0
+								}
+							} els{
+								(A:NAV TOFROM:2, Enum) 1 == if{
+									1 sp0
+								} els{
+									0 sp0
+								}
+							}
+							l0
+						</FLAG_TO_CODE>
+						<FLAG_FROM_CODE>
+							(L:AS430_CDI_Source_1, Bool) if{
+								(A:GPS IS ACTIVE FLIGHT PLAN, Bool) if{
+									#BEARING_CHECK# 90 &gt; if{ 
+										1 sp0 
+									}											
+								} els{
+									0 sp0
+								}
+							} els{
+								(A:NAV TOFROM:2, Enum) 2 == if{
+									1 sp0
+								} els{
+									0 sp0
+								}
+							}
+							l0
+						</FLAG_FROM_CODE>
+						<FLAG_GLIDE_CODE>
+							(L:AS430_CDI_Source_1, Bool) if{
+								(A:GPS HAS GLIDEPATH, Bool)
+							} els{
+								(A:NAV HAS GLIDE SLOPE:2, Bool)
+							}
+						</FLAG_GLIDE_CODE>					
+					</UseTemplate>
+				</Component>
+
+			</Component>
+
+			<Component ID="INSTRUMENT_EngineInstruments">
+
+				<Component ID="Analog_Torque">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_Torque_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:TURB ENG FREE TURBINE TORQUE:1,Foot Pounds) 30.57 / 100 * 60 /
+						</ANIM_CODE>					
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_ITT">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_ITT_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:TURB ENG ITT:1, celsius) 200 - 1000 / 100 *
+						</ANIM_CODE>					
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_PropRPM">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_PropRPM_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:PROP RPM:1,RPM) 2500 / 100 *
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>2500</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_N1">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_N1_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:TURB ENG N1:1,PERCENT)
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>110</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>110</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_FuelFlow">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_FuelFlow_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:ENG FUEL FLOW GPH:1,Gallons per hour) 80 / 100 *
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>80</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_FuelQtyL">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_FuelQtyL_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:FUEL TANK LEFT MAIN LEVEL,Percent)
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>100</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+						<FAILURE>(A:ELECTRICAL MAIN BUS VOLTAGE,Volts)</FAILURE>
+						<FAILURE_CODE>0</FAILURE_CODE>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_FuelQtyR">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_FuelQtyR_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:FUEL TANK RIGHT MAIN LEVEL,Percent)
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>100</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+						<FAILURE>(A:ELECTRICAL MAIN BUS VOLTAGE,Volts)</FAILURE>
+						<FAILURE_CODE>0</FAILURE_CODE>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_OilTemp">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_OilTemp_1</ANIM_NAME>
+						<ANIM_CODE>
+							(L:OIL_TEMP) 120 / 100 *
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>120</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_OilPress">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_OilPressure_1</ANIM_NAME>
+						<ANIM_CODE>
+							(L:MV_NEW_OILPRESSURE) 150 / 100 *
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>150</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_Volts">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_Volts_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:ELECTRICAL MAIN BUS VOLTAGE,Volts) 30 / 100 *
+						</ANIM_CODE>
+						<MIN_VALUE>0</MIN_VALUE>
+						<MAX_VALUE>30</MAX_VALUE>						
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+				<Component ID="Analog_Amps">
+					<UseTemplate Name="ASOBO_GT_Anim_Code">
+						<ANIM_NAME>INSTRUMENT_Needle_Amps_1</ANIM_NAME>
+						<ANIM_CODE>
+							(A:ELECTRICAL GENALT BUS AMPS:1,Amperes) 0 >
+							if{
+								(A:ELECTRICAL GENALT BUS AMPS:1,Amperes) 200 + 400 / 100 * 2.5 +
+							} els{
+								(A:ELECTRICAL MAIN BUS AMPS, Amperes) 200 + 400 / 100 * 2.5 +
+							}
+						</ANIM_CODE>					
+						<ANIM_LAG>20</ANIM_LAG>
+						<ANIM_LENGTH>100</ANIM_LENGTH>
+					</UseTemplate>				
+				</Component>
+
+			</Component>
+	
+		<!-- AVIONICS ################################## -->
+
+			<Component ID="AS530">
+				<UseTemplate Name="ASOBO_AS530_Template">
+					<ID>1</ID>
+					<POTENTIOMETER>5</POTENTIOMETER>
+					<DIMMING_FACTOR>0.5</DIMMING_FACTOR>
+					<FAILURE>(A:CIRCUIT ON:9, Bool)</FAILURE>
+					<CIRCUIT_ID>9</CIRCUIT_ID>
+					<NAV_INDEX>1</NAV_INDEX>
+					<COM_INDEX>1</COM_INDEX>
+					<EXTERNAL_AUTOPILOT_BEHAVIOR_CONTROL />
+				</UseTemplate>
+			</Component>
+
+			<Component ID="AS430">
+				<UseTemplate Name="ASOBO_AS430_Template">
+					<POTENTIOMETER>5</POTENTIOMETER>
+					<DIMMING_FACTOR>0.5</DIMMING_FACTOR>
+					<FAILURE>(A:CIRCUIT ON:10, Bool)</FAILURE>
+					<CIRCUIT_ID>10</CIRCUIT_ID>
+					<NAV_INDEX>2</NAV_INDEX>
+					<COM_INDEX>2</COM_INDEX>
+					<EXTERNAL_AUTOPILOT_BEHAVIOR_CONTROL />		
+				</UseTemplate>		
+			</Component>
+
+			<Component ID="GTX330">
+				<UseTemplate Name="ASOBO_AS330_Template">
+					<ID>1</ID>
+					<FAILURE>(A:CIRCUIT ON:10, Bool)</FAILURE>
+					<CIRCUIT_ID>10</CIRCUIT_ID>
+					<POTENTIOMETER>5</POTENTIOMETER>
+					<EMISSIVE_POTENTIOMETER>5</EMISSIVE_POTENTIOMETER>
+					<BUTTON_EMISSIVE_FACTOR>0.5</BUTTON_EMISSIVE_FACTOR>
+				</UseTemplate>
+			</Component>
+
+			<Component ID="Davtron_Clock">
+				<UseTemplate Name="ASOBO_INSTRUMENT_Clock_Template">
+					<USE_BACKLIGHTING>True</USE_BACKLIGHTING>
+					<SCREEN_NODE_ID>INSTRUMENT_Clock_Screen_1</SCREEN_NODE_ID>
+					<WWISE_EVENT_1>button_davtron_press</WWISE_EVENT_1>
+					<WWISE_EVENT_2>button_davtron_release</WWISE_EVENT_2>
+				</UseTemplate>
+			</Component>
+			
+			<Component ID="FuelTotalizer">
+				<Parameters Type="Default">
+					<NODE_ID>INSTRUMENT_Push_FuelTotalizerReset_1</NODE_ID>
+					<ANIM_NAME>INSTRUMENT_Push_FuelTotalizerReset_1</ANIM_NAME>
+					<WWISE_EVENT_1>button_fuel_totalizer_press_release</WWISE_EVENT_1>
+				</Parameters>
+				<Parameters Type="Default">
+					<TOOLTIP_TITLE>'Reset Totalizer'</TOOLTIP_TITLE>
+					<TOOLTIP_TITLE_IS_DYNAMIC>True</TOOLTIP_TITLE_IS_DYNAMIC>
+					<TT_ICON>Push</TT_ICON>
+					<TT_INTERACTION_FLAGS>PRIMARY_DOWN</TT_INTERACTION_FLAGS>
+					<TT_DESCRIPTION>'Press to reset totalizer to zero'</TT_DESCRIPTION>
+					<NO_TT_VALUE>True</NO_TT_VALUE>
+				</Parameters>
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<UseInputEvent ID="MV_IE_TOOLTIP">
+						<TT_BASIC_ONLY>#NODE_ID#</TT_BASIC_ONLY>
+					</UseInputEvent>
+					<UseTemplate Name="ASOBO_GT_Push_Button">
+						<TOOLTIP_ENTRY_0>MV_#NODE_ID#</TOOLTIP_ENTRY_0>
+						<LEFT_SINGLE_CODE>
+							(&gt;H:ofuelcomp_reset)
+						</LEFT_SINGLE_CODE>
+					</UseTemplate>						
+				</Component>
+			</Component>		
+
+		<!-- INDICATOR LAMPS ########################### -->
+
+			<Component ID="ANNUN_Prop_Low_P_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Prop_Low_P</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:PROP BETA:1, degree) 0.3 &lt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Batt_Bus_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Batt_Bus</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:ELECTRICAL BATTERY BUS VOLTAGE, volts) 24 &lt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Gen_Bus_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Gen_Bus</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:ELECTRICAL GENALT BUS VOLTAGE, volts) 24 &lt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Suction_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Suction</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:SUCTION PRESSURE, inHg) 1.5 &lt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Batt_Hot_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Batt_Hot</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (L:XMLVAR_BatteryHotFlag) and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Generator_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Generator</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:ELECTRICAL MAIN BUS AMPS:1, Amps) 0 &lt; (A:GENERAL ENG COMBUSTION:1, Bool) and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Fuel_Filter_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Fuel_Filter</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Fuel_Press_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Fuel_Press</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:GENERAL ENG FUEL PRESSURE:1, Psi) 4 &lt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Inverter_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Inveter</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Aux_Fuel_Pump_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Aux_Fuel_Pump</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:GENERAL ENG FUEL PUMP SWITCH:1, bool) and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Chip_Detect_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Chip_Detect</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (L:MV_XMLVAR_ChipDetectTimer) 29 &gt; and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_Anti_Ice_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_Anti_Ice</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:PITOT HEAT, bool) and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_L_Ext_Fuel_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_L_Ext_Fuel</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:FUEL TRANSFER PUMP ON:1, Bool) (A:FUEL TANK LEFT MAIN LEVEL, Percent) 90 &gt; and and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+			<Component ID="ANNUN_R_Ext_Fuel_Light">
+				<Parameters Type="Default">
+					<INDICATOR_NODE_ID>ANNUN_R_Ext_Fuel</INDICATOR_NODE_ID>
+					<EMISSIVE_INDICATOR_CODE>
+						(A:ELECTRICAL MAIN BUS VOLTAGE:1, volts) 0 &gt; (A:FUEL TRANSFER PUMP ON:2, Bool) (A:FUEL TANK RIGHT MAIN LEVEL, Percent) 90 &gt; and and
+					</EMISSIVE_INDICATOR_CODE>
+				</Parameters>
+				<Condition Check="INDICATOR_NODE_ID">
+					<Component ID="#INDICATOR_NODE_ID#" Node="#INDICATOR_NODE_ID#">
+						<UseTemplate Name="ASOBO_GT_Emissive_Gauge">
+							<EMISSIVE_CODE>#EMISSIVE_INDICATOR_CODE#</EMISSIVE_CODE>
+						</UseTemplate>
+					</Component>
+				</Condition>
+			</Component>
+
+    
+
+	</Behaviors>
+
+</ModelInfo>
