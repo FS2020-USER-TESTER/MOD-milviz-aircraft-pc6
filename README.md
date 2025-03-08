@@ -16,3 +16,9 @@ Here are issues this mod addresses:
 
 
 Suggest you make comments and suggestions in the github Issues tab and not to Milviz Discord.
+
+KNOWN OPEN ISSUES
+
+[Glass Models] Not using latest G1000 code version
+[All] When spawning on runway, ignition switch is on and guard is up. Guard on starter is also up.
+[Analog Models] Lettering of Red annunicators not readable
