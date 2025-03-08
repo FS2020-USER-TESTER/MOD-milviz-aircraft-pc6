@@ -7,11 +7,12 @@ Click on right of this page and go to latest release. Download the zip, unzip, a
 Here are issues this mod addresses:
 
 * [Standard Wheel Models]  Fix to "right wheel appears to be floading when parked."
+* [All 6 models] Correct AP configuration to match KAP140 specification - when AP enabled go to ROLL mode.
 * [All 6 models]  Increase transfer pump rate from 0.03 to 0.1 lbs/sec.
-* [3 Analog Models] Correct operation of AMP gauge with battery only and with generator operating.
+* [3 Analog Models] Correct operation of AMP gauge - negative with battery only and positive when generator operating.
 * [3 Analog Models] Correction to "Fuel gauges should not operate when no main bus voltage."
 * [3 Analog Models] Correct ITT digital/analog gauge.
 * [3 Analog Models] Correct tablet to allow tie-down when parked.
-* [All 6 models] Correct AP configuration to match KAP140 specification - when AP enabled go to ROLL mode.
+
 
 Suggest you make comments and suggestions in the github Issues tab and not to Milviz Discord.
