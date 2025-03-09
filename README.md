@@ -12,13 +12,13 @@ Here are issues this mod addresses:
 * [3 Analog Models] Correct operation of AMP gauge - negative with battery only and positive when generator operating.
 * [3 Analog Models] Correction to "Fuel gauges should not operate when no main bus voltage."
 * [3 Analog Models] Correct ITT digital/analog gauge.
-* [3 Analog Models] Correct tablet to allow tie-down when parked.
+* [2 Wheel Models] Correct tablet to allow tie-down when parked. Tie-down not provided in float or tundra
 
 
 Suggest you make comments and suggestions in the github Issues tab and not to Milviz Discord.
 
 KNOWN OPEN ISSUES
 
-[Glass Models] Not using latest G1000 code version
-[All] When spawning on runway, ignition switch is on and guard is up. Guard on starter is also up.
-[Analog Models] Lettering of Red annunicators not readable
+* [Glass Models] Not using latest G1000 code version
+* [All] When spawning on runway, ignition switch is on and guard is up. Guard on starter is also up.
+* [Analog Models] Lettering of Red annunicators not readable
