@@ -1,4 +1,4 @@
-# MOD-milviz-aircraft-pc6
+## MOD-milviz-aircraft-pc6
 
 This mod folder is intended to fix several reamaining issues in Milviz PC-6 when using MSFS 2024 SU1.
 
@@ -15,7 +15,7 @@ Here are issues this mod addresses:
 * [2 Wheel Models] Correct tablet to allow tie-down when parked. Tie-down not provided in float or tundra
 
 
-# Suggest you make comments and suggestions in the github Issues tab and not to Milviz Discord.
+## Suggest you make comments and suggestions in the github Issues tab and not to Milviz Discord.
 
 KNOWN OPEN ISSUES
 
