@@ -56,6 +56,11 @@
       "date": 133857553519019159
     },
     {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Floats/panel/PANEL.CFG",
+      "size": 2641,
+      "date": 133859969403720727
+    },
+    {
       "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/flight_model.cfg",
       "size": 17807,
       "date": 133858235188379215
@@ -69,6 +74,11 @@
       "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/model/PC6_Interior.xml",
       "size": 45862,
       "date": 133857553283088652
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Tundra/panel/PANEL.CFG",
+      "size": 2641,
+      "date": 133859969605791091
     },
     {
       "path": "SimObjects/Airplanes/Milviz_PC6_Analog_Wheels/flight_model.cfg",
@@ -101,6 +111,11 @@
       "date": 133858260717642593
     },
     {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Floats/panel/PANEL.CFG",
+      "size": 1323,
+      "date": 133859968800353958
+    },
+    {
       "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Tundra/flight_model.cfg",
       "size": 17777,
       "date": 133858235574157560
@@ -111,6 +126,11 @@
       "date": 133858260802926758
     },
     {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Tundra/panel/PANEL.CFG",
+      "size": 1323,
+      "date": 133859968928273477
+    },
+    {
       "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Wheels/flight_model.cfg",
       "size": 17882,
       "date": 133858235853752677
@@ -119,6 +139,11 @@
       "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Wheels/systems.cfg",
       "size": 17057,
       "date": 133858260897400482
+    },
+    {
+      "path": "SimObjects/Airplanes/Milviz_PC6_Glass_Wheels/panel/PANEL.CFG",
+      "size": 1323,
+      "date": 133859969062595218
     }
   ]
 }
