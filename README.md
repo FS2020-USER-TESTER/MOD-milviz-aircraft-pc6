@@ -8,9 +8,6 @@ This mod folder is intended to fix several reamaining issues in Milviz PC-6 when
 
 Click on right of this page and go to latest release. Download the zip, unzip, and copy folder MOD-milviz-aircraft-pc6 to FS20204 community.
 https://github.com/FS2020-USER-TESTER/MOD-milviz-aircraft-pc6/releases
-
-### FS2024 will reset to default all of your previously customized control assignments for the 6 models when MOD is loaded.
-### The reset seems to occur on every start of the sim. This makes a mod very difficult to manage in FS2024.
 Go into controls menu to re-select your desired control profiles.
 
 Here are issues this mod addresses:
