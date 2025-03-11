@@ -1,4 +1,8 @@
 ## MOD-milviz-aircraft-pc6
+### On every start, when when MOD is present, FS2024 will reset to default all of your previously customized control assignments for the 6 models .
+#### This behavior makes a mod very difficult to manage in FS2024.
+#### This effort to create a patch mod is a failure.
+
 
 This mod folder is intended to fix several reamaining issues in Milviz PC-6 when using MSFS 2024 SU1.
 
